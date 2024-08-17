@@ -37,7 +37,7 @@ app.get('/auth/google/callback',
   })
 );
 
-app.get('/protected', isLoggedIn, (req, res) => {
+app.get('/protected', isLoggedIn, limiter, (req, res) => {
   res.send(`Hello ${req.user.displayName}. You are logged in with Gmail account`);
 });
 
