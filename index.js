@@ -18,7 +18,7 @@ const isLoggedIn = (req, res, next) => {
   req.user ? next() : res.sendStatus(401);
 };
 
-app.use(session({ secret: process.env.SESSION_SECRET || 'default', resave: false, saveUninitialized: true }));
+app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -60,3 +60,5 @@ app.get('/auth/google/failure', (req, res) => {
 });
 
 app.listen(process.env.PORT || 4000, () => console.log('listening on port: 4000'));
+
+export {app};
